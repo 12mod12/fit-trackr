@@ -147,6 +147,6 @@ Cookie::$salt = 653321684396991611388753498727866409864057098;
  */
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'welcome',
+		'controller' => 'update',
 		'action'     => 'index',
 	));
