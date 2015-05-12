@@ -4,7 +4,7 @@ class Controller_Welcome extends Controller {
 
 	public function action_index()
 	{
-		$this->response->body('welcome to fit-trackr!  It\'s like Uber, but for fitness!');
+		$this->response->body('welcome to fit-trackr!  It\'s like Uber, but for fitness!<p>  <a href=/programs/fit-trackr/index.php/update>Click Here to Update Code</a>');
 	}
 
 } // End Welcome
