@@ -103,8 +103,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'   => '/programs/fit-trackr/',
-	'index_file' => FALSE,
+	'base_url'   => '/kohana/',
 ));
 
 /**
@@ -147,6 +146,6 @@ Cookie::$salt = 653321684396991611388753498727866409864057098;
  */
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'update',
+		'controller' => 'welcome',
 		'action'     => 'index',
 	));
