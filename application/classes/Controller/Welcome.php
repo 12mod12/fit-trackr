@@ -24,7 +24,7 @@ class Controller_Welcome extends Controller {
 				</a>
 
 				<a id="programs" title="Programs" href="/programs/programs.html">
-					<span>Programs</span>
+					<span>Lifts</span>
 				</a>
 			
 				<a id="writing" title="Writing" href="/writing/writing.html">
