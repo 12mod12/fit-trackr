@@ -8,6 +8,8 @@ class Controller_Update extends Controller {
 		echo shell_exec("pwd")."<p>";
 		echo shell_exec("git pull 2>&1")."<p>";
 		
+		//echo shell_exec("git clone https://github.com/12mod12/website.git 2>&1")."<p>"; 
+		
 		echo '<a href=/programs/fit-trackr/index.php/welcome>Back to Home</a>';
 		
 	}
