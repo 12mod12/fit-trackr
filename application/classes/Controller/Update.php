@@ -5,6 +5,7 @@ class Controller_Update extends Controller {
 	public function action_index()
 	{
 		echo shell_exec("git --version")."<p>";
+		echo shell_exec("which git")."<p>";
 		echo shell_exec("pwd")."<p>";
 		echo shell_exec("git pull 2>&1")."<p>";
 		echo shell_exec("echo test >> /var/www/cgi-bin/test.cgi 2>&1")."<p>";
