@@ -15,8 +15,9 @@ class Controller_LiftType extends Controller_Template {
 	public function action_submit(){
 		$this->template->message = Arr::get($_POST,'liftname');
 		$this->template->action = 'submit';
-		
-		
+		$db = Database::instance();
+		$columns = $db->list_columns('lift_type');
+		$this->templage->message = serialize($columns);
 	}
 
 }
