@@ -5,11 +5,12 @@
     	<?php include '_includes/header.php'?>
     	<div class="content">
     		<div class="description">
-        		<form class = "submission" method = "POST">
+        		<form class = "submission" method = "POST" action = "<?php echo $action ?>">
 					Lift Name:<br> 
 					<input type="text" name="liftname"><br>
 					<input type="submit" value="Submit">
-				</form>	
+				</form>
+				<?php echo $message ?>	
         	</div>
        	</div>
     </body>

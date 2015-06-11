@@ -7,7 +7,15 @@ class Controller_LiftType extends Controller_Template {
 	public function action_index()
 	{
 			
-			$this->template->message = 'ur in lift country now';	
+			$this->template->message = 'ur in lift country now';
+			$this->template->action = 'liftType/submit';	
+		
+	}
+	
+	public function action_submit(){
+		$this->template->message = Arr::get($_POST,'liftname');
+		$this->template->action = 'submit';
+		
 		
 	}
 
