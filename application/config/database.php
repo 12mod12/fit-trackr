@@ -16,4 +16,19 @@ return array
 		'charset'      => 'utf8',
 		'caching'      => FALSE,
 	),
+		
+	'remote' => array
+	(
+			'type'       => 'MySQL',
+			'connection' => array(
+					'hostname'   => '12mod12.com',
+					'database'   => 'hreed_rfittrackr',
+					'username'   => 'hreed_rfittrackr',
+					'password'   => 'Horsekickbattery',
+					'persistent' => FALSE,
+			),
+			'table_prefix' => '',
+			'charset'      => 'utf8',
+			'caching'      => FALSE,
+	),
 );
