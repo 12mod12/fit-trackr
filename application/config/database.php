@@ -6,7 +6,7 @@ return array
 	(
 		'type'       => 'MySQL',
 		'connection' => array(
-			'hostname'   => '12mod12.com',
+			'hostname'   => 'localhost',
 			'database'   => 'hreed_fittrackr',
 			'username'   => 'hreed_fittrackr',
 			'password'   => 'Horsekickbattery12',
