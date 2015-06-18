@@ -18,7 +18,7 @@ class Controller_LiftType extends Controller_Template {
 		$db = Database::instance();
 		
 		//$columns = $db->list_columns('lift_type');
-		$this->template->message = Kohana::$environment;
+		$this->template->message = serialize($db);
 	}
 
 }
