@@ -87,6 +87,15 @@ if (isset($_SERVER['KOHANA_ENV']))
 	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
 
+if (strpos($_SERVER['HTTP_HOST'], '12mod12.com') !== FALSE)
+{
+	// We are live!
+	Kohana::$environment = Kohana::PRODUCTION;
+
+	// Turn off notices and strict errors
+	error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
+}
+
 /**
  * Initialize Kohana, setting the default options.
  *

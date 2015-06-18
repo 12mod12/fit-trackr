@@ -22,7 +22,7 @@ return array
 			'type'       => 'MySQL',
 			'connection' => array(
 					'hostname'   => '12mod12.com',
-					'database'   => 'hreed_rfittrackr',
+					'database'   => 'hreed_fittrackr',
 					'username'   => 'hreed_rfittrackr',
 					'password'   => 'Horsekickbattery',
 					'persistent' => FALSE,
