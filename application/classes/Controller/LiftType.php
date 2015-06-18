@@ -13,12 +13,25 @@ class Controller_LiftType extends Controller_Template {
 	}
 	
 	public function action_submit(){
-		$this->template->message = Arr::get($_POST,'liftname');
+		$liftname = Arr::get($_POST,'liftname');
 		$this->template->action = 'submit';
 		$db = Database::instance();
-		
-		//$columns = $db->list_columns('lift_type');
-		$this->template->message = serialize($db);
+		$success = TRUE;
+		$db->begin();
+		try {
+			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname));
+			$db->commit();
+		}
+		catch (Database_Exception $e)
+		{
+			$db->rollback();
+			$success = FALSE;
+		}
+		if ($success){
+			$this->template->message = "Successfully added ".$liftname;
+		} else {
+			$this->template->message = "Error inserting data.";
+		}
 	}
 
 }
