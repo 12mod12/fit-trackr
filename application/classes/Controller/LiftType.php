@@ -21,7 +21,7 @@ class Controller_LiftType extends Controller_Template {
 		$db->begin();
 		try {
 			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute;
-			$this->templage->result = $query;
+			$this->template->result = $query;
 			$db->commit();
 		}
 		catch (Database_Exception $e)
