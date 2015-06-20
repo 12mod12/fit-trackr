@@ -9,6 +9,7 @@ class Controller_LiftType extends Controller_Template {
 			
 			$this->template->message = 'ur in lift country now';
 			$this->template->action = 'liftType/submit';	
+			$this->template->result = '';
 		
 	}
 	
@@ -19,7 +20,8 @@ class Controller_LiftType extends Controller_Template {
 		$success = TRUE;
 		$db->begin();
 		try {
-			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname));
+			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute;
+			$this->templage->result = $query;
 			$db->commit();
 		}
 		catch (Database_Exception $e)

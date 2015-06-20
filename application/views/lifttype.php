@@ -10,7 +10,8 @@
 					<input type="text" name="liftname"><br>
 					<input type="submit" value="Submit">
 				</form>
-				<?php echo $message ?>	
+				<?php echo $message ?><p>	
+				<?php echo $result ?>
         	</div>
        	</div>
     </body>
