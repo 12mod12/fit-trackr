@@ -11,7 +11,8 @@
 					<input type="submit" value="Submit">
 				</form>
 				<?php echo $message ?><p>	
-				<?php echo $result ?>
+				<?php echo $result ?><p><p>
+				<a href="welcome"><== HOME</a>
         	</div>
        	</div>
     </body>
