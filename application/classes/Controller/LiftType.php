@@ -16,16 +16,17 @@ class Controller_LiftType extends Controller_Template {
 	public function action_submit(){
 		$liftname = Arr::get($_POST,'liftname');
 		$this->template->action = 'submit';
+		$this->template->result = '';
 		$db = Database::instance();
 		$success = TRUE;
 		$db->begin();
 		try {
-			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute();
-			$this->template->result = $query;
+			DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute();
 			$db->commit();
 		}
 		catch (Database_Exception $e)
 		{
+			$this->template->result = $e;
 			$db->rollback();
 			$success = FALSE;
 		}
