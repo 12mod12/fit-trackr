@@ -20,7 +20,7 @@ class Controller_LiftType extends Controller_Template {
 		$success = TRUE;
 		$db->begin();
 		try {
-			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute;
+			$query = DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute();
 			$this->template->result = $query;
 			$db->commit();
 		}
