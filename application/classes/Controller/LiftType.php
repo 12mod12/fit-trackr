@@ -17,23 +17,33 @@ class Controller_LiftType extends Controller_Template {
 		$liftname = Arr::get($_POST,'liftname');
 		$this->template->action = 'submit';
 		$this->template->result = '';
-		$db = Database::instance();
-		$success = TRUE;
-		$db->begin();
-		try {
-			DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute();
-			$db->commit();
-		}
-		catch (Database_Exception $e)
-		{
-			$this->template->result = $e;
-			$db->rollback();
-			$success = FALSE;
-		}
-		if ($success){
-			$this->template->message = "Successfully added ".$liftname;
+		if (empty($liftname)){
+			$this->template->message = "Please enter a lift type for submmission."; 
 		} else {
-			$this->template->message = "Error inserting data.";
+			
+			$db = Database::instance();
+			$success = TRUE;
+			$db->begin();
+			try {
+				DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute();
+				$db->commit();
+			}
+			catch (Database_Exception $e)
+			{				
+				$error_code = $e->get_code();
+				$db->rollback();
+				$success = FALSE;
+			}
+			if ($success){
+				$this->template->message = "Successfully added ".$liftname;
+			} else {
+				$this->template->message = "Error inserting data.";
+				error_log($error_code);
+				if ($error_code == 1062){
+					$this->template->result = "The lift [".$liftname."] already exists";
+				}
+				error_log($e);
+			}
 		}
 	}
 
