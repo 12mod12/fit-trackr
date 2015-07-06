@@ -153,8 +153,15 @@ Cookie::$salt = 653321684396991611388753498727866409864057098;
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+Route::set('restful', 'restful/<controller>(/<action>)')
+	->defaults(array(		
+		'directory'  => 'restful',
+		'action'	 => 'index',
+	));
+ 
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'welcome',
 		'action'     => 'index',
-	));
+	));	
+
