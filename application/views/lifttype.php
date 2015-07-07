@@ -17,7 +17,7 @@
         	<div class="dropdown">
         		<form class = "delete" method = "POST" action = "<?php echo $drop_action ?>">
         			Current Lifts:<br>
-        			<select name="lifts">
+        			<select name="lift_type_id">
         			<?php foreach($lifts as $lift): ?>
         				<option value="<?php echo $lift['lift_type_id'] ?>"><?php echo $lift['lift_name'] ?></option>
         			<?php endforeach; ?>
