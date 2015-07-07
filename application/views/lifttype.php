@@ -15,7 +15,15 @@
 				<a href="welcome"><== HOME</a>
         	</div>
         	<div class="dropdown">
-        	"hello"
+        		<form class = "delete" method = "POST" action = "<?php echo $drop_action ?>">
+        			Current Lifts:<br>
+        			<select name="lifts">
+        			<?php foreach($lifts as $lift): ?>
+        				<option value="<?php echo $lift['lift_type_id'] ?>"><?php echo $lift['lift_name'] ?></option>
+        			<?php endforeach; ?>
+        			</select>
+        			<input type="submit" value="DELETE">
+        		</form>	
         	</div>
        	</div>
        	

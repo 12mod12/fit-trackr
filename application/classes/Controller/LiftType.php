@@ -32,12 +32,14 @@ class Controller_LiftType extends Controller_Template {
 	public function action_index()
 	{
 			$this->template->action = 'liftType/submit';	
+			$this->template->drop_action = '';
 			$this->template->result = '';
 	}
 	
 	public function action_submit(){
 		$liftname = Arr::get($_POST,'liftname');
 		$this->template->action = 'submit';
+		$this->template->drop_action = '';
 		$this->template->result = '';
 		if (empty($liftname)){
 			$this->template->message = "Please enter a lift type for submmission."; 
