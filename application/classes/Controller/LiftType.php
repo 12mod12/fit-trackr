@@ -4,13 +4,35 @@ class Controller_LiftType extends Controller_Template {
 
 	public $template = 'lifttype';
 	
+	public function before(){
+			parent::before();
+	
+			$db = Database::instance();
+			$success = TRUE;
+			$db->begin();
+			try {
+				$result = DB::select()->from('lift_type')->execute();
+			}
+			catch (Database_Exception $e)
+			{				
+				$error_code = $e->get_code();
+				$db->rollback();
+				$success = FALSE;
+			}
+			if ($success){
+				$this->template->message = '';
+				$this->template->lifts = $result;
+			} else {
+				$this->template->message = "Error finding lift type data.";
+				error_log($error_code);
+				error_log($e);
+			}
+	}
+	
 	public function action_index()
 	{
-			
-			$this->template->message = 'ur in lift country now';
 			$this->template->action = 'liftType/submit';	
 			$this->template->result = '';
-		
 	}
 	
 	public function action_submit(){

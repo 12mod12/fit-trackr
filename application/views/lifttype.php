@@ -4,7 +4,7 @@
     <body>
     	<?php include '_includes/header.php'?>
     	<div class="content">
-    		<div class="description">
+    		<div class="submission">
         		<form class = "submission" method = "POST" action = "<?php echo $action ?>">
 					Lift Name:<br> 
 					<input type="text" name="liftname"><br>
@@ -14,6 +14,10 @@
 				<?php echo $result ?><p><p>
 				<a href="welcome"><== HOME</a>
         	</div>
+        	<div class="dropdown">
+        	"hello"
+        	</div>
        	</div>
+       	
     </body>
 </html>
