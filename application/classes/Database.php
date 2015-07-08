@@ -16,4 +16,23 @@ abstract class Database extends Kohana_Database {
 	}
   	return parent::instance($name, $config);
   }
+  
+  public static function execute($query){
+  	$response = new stdClass();
+  	$db = Database::instance();
+  	
+  	$db->begin();
+  	try {
+  		$response->result = $query->execute();
+  		$response->success = TRUE;
+  	}
+  	catch (Database_Exception $e)
+  	{
+  		$response->result = $e;
+  		$response->success = FALSE;
+  		$db->rollback();
+  	}
+  	
+  	return $response;
+  } 
 }

@@ -4,22 +4,19 @@ class Controller_LiftType extends Controller_Template {
 
 	public $template = 'lifttype';
 	
+	public function before(){
+		parent::before();
+		
+		$this->template->message = '';
+		$this->template->result = '';
+	}
+	
 	public function after(){
 	
-			$db = Database::instance();
-			$success = TRUE;
-			$db->begin();
-			try {
-				$result = DB::select()->from('lift_type')->execute();
-			}
-			catch (Database_Exception $e)
-			{				
-				$error_code = $e->get_code();
-				$db->rollback();
-				$success = FALSE;
-			}
-			if ($success){
-				$this->template->lifts = $result;
+			$response = Database::execute(DB::select()->from('lift_type'));
+			
+			if ($response->success){
+				$this->template->lifts = $response->result;
 			} else {
 				$this->template->message = "Error finding lift type data.";
 				error_log($error_code);
@@ -29,19 +26,11 @@ class Controller_LiftType extends Controller_Template {
 			parent::after();
 	}
 	
-	public function action_index()
-	{
-			$this->template->message = '';
-			$this->template->action = 'liftType/submit';	
-			$this->template->drop_action = 'liftType/delete';
-			$this->template->result = '';
-	}
+	public function action_index(){}
 	
 	public function action_submit(){
 		$liftname = Arr::get($_POST,'liftname');
-		$this->template->action = 'submit';
-		$this->template->drop_action = 'delete';
-		$this->template->result = '';
+		
 		if (empty($liftname)){
 			$this->template->message = "Please enter a lift type for submmission."; 
 		} else {
@@ -76,10 +65,7 @@ class Controller_LiftType extends Controller_Template {
 	
 	public function action_delete(){
 		$lift_type_id = Arr::get($_POST,'lift_type_id');
-		$this->template->action = 'submit';
-		$this->template->drop_action = 'delete';
-		$this->template->result = '';
-		$this->template->message = '';
+
 		if (empty($lift_type_id)){
 			$this->template->result = "Please select a lift type for deletion.";
 		} else {
@@ -88,10 +74,8 @@ class Controller_LiftType extends Controller_Template {
 			$success = TRUE;
 			$db->begin();
 			try {
-				error_log("attempting DB delete".$lift_type_id);
 				DB::delete('lift_type')->where('lift_type_id', 'IN' , array($lift_type_id))->execute();
 				$db->commit();
-				error_log("delete committed");
 			}
 			catch (Database_Exception $e)
 			{

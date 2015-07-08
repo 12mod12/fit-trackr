@@ -8,7 +8,7 @@
         		<h1><?php echo $message; ?></h1>
         		<p>We just wanted to say it! :)</p>
         		<p>
-        		<a href="welcome"><== HOME</a>
+        		<a href="<?php echo $ROOT_URL ?>index.php/welcome"><== HOME</a>
        		</div>
         </div>
     </body>
