@@ -100,12 +100,12 @@ class Controller_LiftType extends Controller_Template {
 				$success = FALSE;
 			}
 			if ($success){
-				$this->template->message = "Successfully added ".$liftname;
+				$this->template->message = "Successfully deleted lift";
 			} else {
-				$this->template->message = "Error inserting data.";
+				$this->template->message = "Error removing lift";
 				error_log($error_code);
 				if ($error_code == 1062){
-					$this->template->result = "The lift [".$liftname."] already exists";
+					$this->template->result = "The lift [".$lift_type_id."] was not removed";
 				} else {
 					$this->template->result = $e;
 				}

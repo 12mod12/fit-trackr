@@ -12,7 +12,7 @@
 				</form>
 				<?php echo $message ?><p>	
 				<?php echo $result ?><p><p>
-				<a href="welcome"><== HOME</a>
+				<a href="<?php echo $ROOT_URL ?>index.php/welcome"><== HOME</a>
         	</div>
         	<div class="dropdown">
         		<form class = "delete" method = "POST" action = "<?php echo $drop_action ?>">
