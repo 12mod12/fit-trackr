@@ -15,11 +15,13 @@ class Controller_LiftType extends Controller_Template {
 	
 			$response = json_decode(Request::factory('restful/lifttype')->execute()->body());
 			
+			$this->template->data = $response;
+			
 			if ($response->success){
 				$this->template->lifts = $response->result;
 			} else {
 				$this->template->message = "Error finding lift type data.";
-				$this->template->lifts = $response->result;
+				$this->template->lifts = array();
 			}
 			
 			parent::after();
