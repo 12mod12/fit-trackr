@@ -13,7 +13,8 @@ class Controller_LiftType extends Controller_Template {
 	
 	public function after(){
 	
-			$response = json_decode(Request::factory('restful/lifttype')->execute()->body());
+			//$response = json_decode(Request::factory('restful/lifttype')->execute()->body());
+			$response = Request::factory('restful/lifttype')->execute()->body();
 			
 			$this->template->data = $response;
 			
