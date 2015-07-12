@@ -16,7 +16,7 @@ class Controller_LiftType extends Controller_Template {
 			//$response = json_decode(Request::factory('restful/lifttype')->execute()->body());
 			$response = Request::factory('restful/lifttype')->execute()->body();
 			
-			$this->template->data = $response;
+			Kohana::$log->add(Log::ERROR,print_r($response,TRUE));
 			
 			if ($response->success){
 				$this->template->lifts = $response->result;
