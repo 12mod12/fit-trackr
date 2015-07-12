@@ -21,7 +21,7 @@ class Controller_LiftType extends Controller_Template {
 				$this->template->lifts = $response->result;
 			} else {
 				$this->template->message = "Error finding lift type data.";
-				$this->template->lifts = array();
+				//$this->template->lifts = array();
 			}
 			
 			parent::after();
