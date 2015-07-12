@@ -13,8 +13,8 @@ class Controller_LiftType extends Controller_Template {
 	
 	public function after(){
 	
-			//$response = json_decode(Request::factory('restful/lifttype')->execute()->body());
-			$response = Request::factory('restful/lifttype')->execute()->body();
+			//$response = json_decode(Request::factory('restful/liftType')->execute()->body());
+			$response = Request::factory('restful/liftType')->execute()->body();
 			
 			Kohana::$log->add(Log::ERROR,print_r($response,TRUE));
 			
