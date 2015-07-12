@@ -19,7 +19,7 @@
         			Current Lifts:<br>
         			<select name="lift_type_id">
         			<?php foreach($lifts as $lift): ?>
-        				<option value="<?php echo $lift['lift_type_id'] ?>"><?php echo $lift['lift_name'] ?></option>
+        				<option value="<?php echo $lift->lift_type_id ?>"><?php echo $lift->lift_name ?></option>
         			<?php endforeach; ?>
         			</select>
         			<input type="submit" value="DELETE">
