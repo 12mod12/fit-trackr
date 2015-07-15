@@ -5,7 +5,7 @@
 		<?php include '_includes/header.php' ?>
 		<div class="content">
     		<div class="submission">
-        		<form class = "submission" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/lifts/submit">
+        		<form class = "lift_submission" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/lifts/submit">
 					Excercise:<br> 
 					Sets:<input type="number" name="sets"><br>
 					Reps:<input type="number" name="reps"><br>

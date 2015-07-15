@@ -21,7 +21,6 @@ class Controller_Lifts extends Controller_Template {
 				$this->template->lifts = $response->result;
 			} else {
 				$this->template->message = "Error finding lift type data.";
-				//$this->template->lifts = array();
 			}
 			
 			parent::after();
@@ -29,9 +28,21 @@ class Controller_Lifts extends Controller_Template {
 	
 	public function action_index()
 	{
-			
 			$this->template->message = 'welcome to lift-city';	
-		
 	}
-
+	
+	public function action_submit()
+	{
+		if (in_array("", $_POST)) {
+			$this->template->message = "Please fill all forms before submitting";
+		} else {
+			$response = json_decode(Request::factory('restful/lifts/submit')->method(Request::POST)->post($_POST)->execute()->body());
+			
+			if ($response->success){
+				$this->template->message = "Lift #:".$response->result[0]." successfully added!";
+			} else {
+				$this->template->message = $response->message;
+			}
+		}
+	}
 }

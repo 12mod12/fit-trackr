@@ -5,6 +5,16 @@
 	float: left;
 }
 
+.lift_submission
+{
+	color: white;
+	position:fixed;
+    top:30%;
+    left:45%;
+    width:50px;
+	
+}
+
 .dropdown
 {
 	color: white;
