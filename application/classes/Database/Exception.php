@@ -5,5 +5,9 @@ class Database_Exception extends Kohana_Database_Exception {
 	public function get_code(){
 		return $this->code;
 	}
+	
+	public function get_message(){
+		return $this->message;
+	}
 
 }

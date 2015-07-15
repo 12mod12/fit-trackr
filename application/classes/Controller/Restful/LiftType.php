@@ -17,19 +17,22 @@ class Controller_Restful_LiftType extends Controller_Restful {
 		
 	}
 	
-	public function action_test()
+	public function action_submit()
 	{
 		$liftname = Arr::get($_POST,'liftname');
 		
 		$data = Database::execute(DB::insert('lift_type', array('lift_name'))->values(array($liftname)));
 		
-		if ($data->success){
-			//if commit is success, return the liftname and id of successful commite
-		} else {
-			//otherwise add the error string and the exeception code
-		}
-
 		$this->response->body(json_encode($data));		
 		
+	}
+	
+	public function action_delete()
+	{
+		$lift_type_id = Arr::get($_POST,'lift_type_id');
+		
+		$data = Database::execute(DB::delete('lift_type')->where('lift_type_id', 'IN' , array($lift_type_id)));
+		
+		$this->response->body(json_encode($data));
 	}
 }

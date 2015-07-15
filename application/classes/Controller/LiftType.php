@@ -15,8 +15,6 @@ class Controller_LiftType extends Controller_Template {
 	
 			$response = json_decode(Request::factory('restful/liftType')->execute()->body());
 			
-			Kohana::$log->add(Log::ERROR,print_r($response,TRUE));
-			
 			if ($response->success){
 				$this->template->lifts = $response->result;
 			} else {
@@ -30,36 +28,23 @@ class Controller_LiftType extends Controller_Template {
 	public function action_index(){}
 	
 	public function action_submit(){
-		$liftname = Arr::get($_POST,'liftname');
+		$liftname = Arr::get($_POST,'liftname');			
 		
 		if (empty($liftname)){
 			$this->template->message = "Please enter a lift type for submmission."; 
 		} else {
 			
-			$db = Database::instance();
-			$success = TRUE;
-			$db->begin();
-			try {
-				DB::insert('lift_type', array('lift_name'))->values(array($liftname))->execute();
-				$db->commit();
-			}
-			catch (Database_Exception $e)
-			{				
-				$error_code = $e->get_code();
-				$db->rollback();
-				$success = FALSE;
-			}
-			if ($success){
+			$response = json_decode(Request::factory('restful/liftType/submit')->method(Request::POST)->post(array('liftname' => $liftname))->execute()->body());
+			
+			if ($response->success){
 				$this->template->message = "Successfully added ".$liftname;
 			} else {
 				$this->template->message = "Error inserting data.";
-				error_log($error_code);
-				if ($error_code == 1062){
+				if ($response->error_code == 1062){
 					$this->template->result = "The lift [".$liftname."] already exists";
 				} else {
-					$this->template->result = $e;
+					$this->template->result = $response->message;
 				}
-				error_log($e);
 			}
 		}
 	}
@@ -71,30 +56,15 @@ class Controller_LiftType extends Controller_Template {
 			$this->template->result = "Please select a lift type for deletion.";
 		} else {
 				
-			$db = Database::instance();
-			$success = TRUE;
-			$db->begin();
-			try {
-				DB::delete('lift_type')->where('lift_type_id', 'IN' , array($lift_type_id))->execute();
-				$db->commit();
-			}
-			catch (Database_Exception $e)
-			{
-				$error_code = $e->get_code();
-				$db->rollback();
-				$success = FALSE;
-			}
-			if ($success){
+			$response = json_decode(Request::factory('restful/liftType/delete')->method(Request::POST)->post(array('lift_type_id' => $lift_type_id))->execute()->body());
+			
+			if ($response->success){
 				$this->template->message = "Successfully deleted lift";
 			} else {
 				$this->template->message = "Error removing lift";
-				error_log($error_code);
-				if ($error_code == 1062){
-					$this->template->result = "The lift [".$lift_type_id."] was not removed";
-				} else {
-					$this->template->result = $e;
-				}
-				error_log($e);
+				$this->template->result = $response->message;
+				error_log($response->message);
+				error_log($response->error_code);
 			}
 		}
 	}

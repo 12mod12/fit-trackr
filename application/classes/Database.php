@@ -25,11 +25,13 @@ abstract class Database extends Kohana_Database {
   	try {
   		$response->result = $query->execute();
   		$response->success = TRUE;
+  		$db->commit();
   	}
   	catch (Database_Exception $e)
   	{
-  		$response->result = $e;
   		$response->success = FALSE;
+  		$response->message = $e->get_message();
+  		$response->error_code = $e->get_code();
   		$db->rollback();
   	}
   	
