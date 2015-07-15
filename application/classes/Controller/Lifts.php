@@ -6,6 +6,27 @@ class Controller_Lifts extends Controller_Template {
 
 	public $template = 'lifts';
 	
+	public function before(){
+		parent::before();
+		
+		$this->template->message = '';
+		$this->template->result = '';
+	}
+	
+	public function after(){
+	
+			$response = json_decode(Request::factory('restful/liftType')->execute()->body());
+			
+			if ($response->success){
+				$this->template->lifts = $response->result;
+			} else {
+				$this->template->message = "Error finding lift type data.";
+				//$this->template->lifts = array();
+			}
+			
+			parent::after();
+	}
+	
 	public function action_index()
 	{
 			
