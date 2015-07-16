@@ -18,7 +18,7 @@ class Controller_Lifts extends Controller_Template {
 			$response = json_decode(Request::factory('restful/liftType')->execute()->body());
 			
 			if ($response->success){
-				$this->template->lifts = $response->result;
+				$this->template->lift_names = $response->result;
 			} else {
 				$this->template->message = "Error finding lift type data.";
 			}
@@ -39,7 +39,24 @@ class Controller_Lifts extends Controller_Template {
 			$response = json_decode(Request::factory('restful/lifts/submit')->method(Request::POST)->post($_POST)->execute()->body());
 			
 			if ($response->success){
-				$this->template->message = "Lift #:".$response->result[0]." successfully added!";
+				$this->template->message = "Lift #".$response->result[0]." successfully added!";
+			} else {
+				$this->template->message = $response->message;
+			}
+		}
+	}
+	
+	public function action_delete()
+	{
+		$lift_id = Arr::get($_POST,'lift_id');
+		
+		if (empty($lift_id)){
+			$this->template->message = "Please select a lift to remove.";
+		} else {
+			$response = json_decode(Request::factory('restful/lifts/delete')->method(Request::POST)->post(array('lift_id' => $lift_id))->execute()->body());
+			
+			if ($response->success){
+				$this->template->message = "Lift #".$lift_id." successfully removed";
 			} else {
 				$this->template->message = $response->message;
 			}

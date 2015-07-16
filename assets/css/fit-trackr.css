@@ -21,3 +21,8 @@
 	margin: 10px;
 	float: left;
 }
+.lift_table
+{
+	height: 100px;
+	overflow: auto;
+}

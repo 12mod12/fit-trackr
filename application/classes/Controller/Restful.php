@@ -2,4 +2,8 @@
 
 class Controller_Restful extends Controller {
 
+	public function action_idex(){
+		$this->response->body(json_encode("Default Index"));
+	}
+
 }
