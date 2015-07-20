@@ -23,6 +23,14 @@ class Controller_Lifts extends Controller_Template {
 				$this->template->message = "Error finding lift type data.";
 			}
 			
+			$response = json_decode(Request::factory('restful/lifts')->execute()->body());
+			
+			if ($response->success){
+				$this->template->lifts = $response->result;
+			} else {
+				$this->template->message = "Error finding lift data.";
+			}
+			
 			parent::after();
 	}
 	

@@ -22,12 +22,19 @@
 				<a href="<?php echo $ROOT_URL ?>index.php/welcome"><== HOME</a>
         	</div>
         	<div class="lift_table">
-				<table name="tbl_lifts" cellpadding="1">
+				<table name="tbl_lifts" cellpadding="1" class="lift_table">
 					<tbody>
-						<tr>
-							<td>
-							Gluten
-						</tr>
+						<?php foreach($lifts as $instance): ?>
+							<tr>
+								<td>
+								<input type="checkbox" name="lifts" 
+								value="<?php echo $instance->lift_id ?>" 
+								id="<?php echo $instance->lift_id ?>">
+								<label for="<?php echo $instance->lift_id ?>">
+								<?php error_log(print_r($lift_names,TRUE));?>
+								<?php echo $instance->sets ."x".$instance->reps."@".$instance->weight." " ?></label>
+							</tr>
+						<?php endforeach; ?>
 					</tbody>
 				</table>
         	</div>
