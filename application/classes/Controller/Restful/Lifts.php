@@ -27,9 +27,9 @@ class Controller_Restful_Lifts extends Controller_Restful {
 	
 	public function action_delete(){
 	
-		$lift_id = Arr::get($_POST,'lift_id');
+		$lifts = Arr::get($_POST,'lifts');
 		
-		$data = Database::execute(DB::delete('lifts')->where('lift_id', 'IN' , array($lift_id)));
+		$data = Database::execute(DB::delete('lifts')->where('lift_id', 'IN' , $lifts));
 		
 		$this->response->body(json_encode($data));
 	
