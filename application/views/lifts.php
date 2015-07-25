@@ -21,18 +21,19 @@
 				<?php echo $result ?><p><p>
 				<a href="<?php echo $ROOT_URL ?>index.php/welcome"><== HOME</a>
         	</div>
-        	<form class = "delete_lifts" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/lifts/test">
+        	<form class = "delete_lifts" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/lifts/delete">
         	<div class="lift_table">
 				<table name="tbl_lifts" cellpadding="1" class="lift_table_content">
 					<tbody>
 						<?php foreach($lifts as $instance): ?>
 							<tr>
 								<td>
-								<input type="checkbox" name="lifts" 
+								<input type="checkbox" name="lifts[]" 
 								value="<?php echo $instance->lift_id ?>" 
 								id="<?php echo $instance->lift_id ?>">
 								<label for="<?php echo $instance->lift_id ?>">
-								<?php echo $instance->sets ."x".$instance->reps."@".$instance->weight." <br>".$lift_names[$instance->lift_type_id]['lift_name']." on<br>".$instance->date ?></label>
+								<?php $lift = Arr::get($lift_names,$instance->lift_type_id) ? $lift_names[$instance->lift_type_id]['lift_name'] : "unknown" ?>
+								<?php echo $instance->sets ."x".$instance->reps."@".$instance->weight." <br>".$lift." on<br>".$instance->date ?></label>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>
