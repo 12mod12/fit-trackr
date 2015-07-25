@@ -15,12 +15,13 @@
         				<option value="<?php echo $lift['lift_type_id'] ?>"><?php echo $lift['lift_name'] ?></option>
         			<?php endforeach; ?>
         			</select>
-					<input type="submit" value="submit">
+					<input type="submit" value="Submit">
 				</form>
 				<?php echo $message ?><p>	
 				<?php echo $result ?><p><p>
 				<a href="<?php echo $ROOT_URL ?>index.php/welcome"><== HOME</a>
         	</div>
+        	<form class = "delete_lifts" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/lifts/test">
         	<div class="lift_table">
 				<table name="tbl_lifts" cellpadding="1" class="lift_table_content">
 					<tbody>
@@ -37,6 +38,8 @@
 					</tbody>
 				</table>
         	</div>
+        	<input type="submit" value="Delete">
+			</form>
         </div>
     </body>
 </html>

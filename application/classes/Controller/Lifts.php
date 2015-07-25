@@ -54,6 +54,11 @@ class Controller_Lifts extends Controller_Template {
 		}
 	}
 	
+	public function action_test()
+	{
+		$this->template->message = serialize($_POST);
+	}
+	
 	public function action_delete()
 	{
 		$lift_id = Arr::get($_POST,'lift_id');
