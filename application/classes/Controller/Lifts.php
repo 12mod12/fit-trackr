@@ -15,10 +15,10 @@ class Controller_Lifts extends Controller_Template {
 	
 	public function after(){
 	
-			$response = json_decode(Request::factory('restful/liftType')->execute()->body());
-			
-			if ($response->success){
-				$this->template->lift_names = $response->result;
+			$response = json_decode(Request::factory('restful/liftType')->execute()->body(),TRUE);
+			error_log(print_r($response,TRUE));
+			if (Arr::get($response,'success')){
+				$this->template->lift_names = Arr::get($response,'result');
 			} else {
 				$this->template->message = "Error finding lift type data.";
 			}

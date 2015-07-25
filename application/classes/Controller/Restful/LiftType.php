@@ -8,7 +8,7 @@ class Controller_Restful_LiftType extends Controller_Restful {
 			
 			if ($data->success){
 				foreach ($data->result as $lift){
-					$result[] = $lift;
+					$result[$lift['lift_type_id']] = $lift;
 				}
 			} 
 			

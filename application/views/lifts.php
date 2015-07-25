@@ -12,17 +12,17 @@
 					Weight<input type="number" name="weight"><br>
 					<select name="lift_type_id">
         			<?php foreach($lift_names as $lift): ?>
-        				<option value="<?php echo $lift->lift_type_id ?>"><?php echo $lift->lift_name ?></option>
+        				<option value="<?php echo $lift['lift_type_id'] ?>"><?php echo $lift['lift_name'] ?></option>
         			<?php endforeach; ?>
         			</select>
-					<input type="submit" value="Submit">
+					<input type="submit" value="submit">
 				</form>
 				<?php echo $message ?><p>	
 				<?php echo $result ?><p><p>
 				<a href="<?php echo $ROOT_URL ?>index.php/welcome"><== HOME</a>
         	</div>
         	<div class="lift_table">
-				<table name="tbl_lifts" cellpadding="1" class="lift_table">
+				<table name="tbl_lifts" cellpadding="1" class="lift_table_content">
 					<tbody>
 						<?php foreach($lifts as $instance): ?>
 							<tr>
@@ -31,8 +31,7 @@
 								value="<?php echo $instance->lift_id ?>" 
 								id="<?php echo $instance->lift_id ?>">
 								<label for="<?php echo $instance->lift_id ?>">
-								<?php error_log(print_r($lift_names,TRUE));?>
-								<?php echo $instance->sets ."x".$instance->reps."@".$instance->weight." " ?></label>
+								<?php echo $instance->sets ."x".$instance->reps."@".$instance->weight." <br>".$lift_names[$instance->lift_type_id]['lift_name']." on<br>".$instance->date ?></label>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

@@ -22,8 +22,14 @@
 }
 .lift_table
 {
-	height: 100px;
+	height: 200px;
 	overflow: auto;
 	float: right;
 	color: white;
+	width: 200px;
+}
+.lift_table_content
+{
+	color: white;
+	width: 150px;
 }
