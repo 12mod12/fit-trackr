@@ -19,11 +19,10 @@ class Controller_Restful_CardioType extends Controller_Restful {
 	
 	public function action_submit()
 	{
-		error_log("inside submit");
-		
 		$cardioname = Arr::get($_POST,'cardioname');
+		$pasttense = Arr::get($_POST, 'pasttense');
 		
-		$data = Database::execute(DB::insert('cardio_type', array('cardio_name'))->values(array($cardioname)));
+		$data = Database::execute(DB::insert('cardio_type', array('cardio_name','past_tense'))->values(array($cardioname,$pasttense)));
 		
 		$this->response->body(json_encode($data));		
 		

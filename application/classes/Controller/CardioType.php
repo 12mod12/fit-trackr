@@ -27,13 +27,15 @@ class Controller_CardioType extends Controller_Template {
 	public function action_index(){}
 	
 	public function action_submit(){
-		$cardioname = Arr::get($_POST,'cardioname');			
+		$cardioname = Arr::get($_POST,'cardioname');
+		$pasttense = Arr::get($_POST,'pasttense');			
 		
 		if (empty($cardioname)){
 			$this->template->message = "Please enter a cardio type for submmission."; 
+		} else if (empty($pasttense)){
+			$this->template->message = "Please enter the past tense for submmission.";
 		} else {
-			
-			$response = json_decode(Request::factory('restful/cardioType/submit')->method(Request::POST)->post(array('cardioname' => $cardioname))->execute()->body());
+			$response = json_decode(Request::factory('restful/cardioType/submit')->method(Request::POST)->post(array('cardioname' => $cardioname, 'pasttense' => $pasttense))->execute()->body());
 			
 			if ($response->success){
 				$this->template->message = "Successfully added ".$cardioname;

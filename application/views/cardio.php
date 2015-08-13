@@ -10,7 +10,7 @@
 					Hours:<input type="number" name="duration_hours"><br>
 					Minutes:<input type="number" name="duration_minutes"><br>
 					Seconds: <input type="number" name="duration_seconds"><br>
-					Distance: <input type="number" name="distance"><br>
+					Distance: <input type="text" name="distance"><br>
 					Calories Burned: <input type="number" name="burned_calories"><br>
 					<select name="cardio_type_id">
         			<?php foreach($cardio_names as $excercise): ?>
@@ -34,8 +34,8 @@
 								value="<?php echo $instance->cardio_id ?>" 
 								id="<?php echo $instance->cardio_id ?>">
 								<label for="<?php echo $instance->cardio_id ?>">
-								<?php $cardio = Arr::get($cardio_names,$instance->cardio_type_id) ? $cardio_names[$instance->cardio_type_id]['cardio_name'] : "unknown" ?>
-								<?php echo $cardio . " " .$instance->distance ." miles in ".$instance->duration_hours.":".$instance->duration_minutes.":".$instance->duration_seconds." <br> on<br>".$instance->date ?></label>
+								<?php $cardio = Arr::get($cardio_names,$instance->cardio_type_id) ? $cardio_names[$instance->cardio_type_id]['past_tense'] : "unknown" ?>
+								<?php echo $cardio . " " .$instance->distance ." miles in ".$instance->duration_hours.":".$instance->duration_minutes.":".$instance->duration_seconds ." burning ".$instance->burned_calories." calories on<br>".$instance->date ?></label>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

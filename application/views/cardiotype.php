@@ -8,6 +8,8 @@
         		<form class = "submission" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/cardioType/submit">
 					Cardio Name:<br> 
 					<input type="text" name="cardioname"><br>
+					Past Tense:<br>
+					<input type="text" name="pasttense"><br>
 					<input type="submit" value="Submit">
 				</form>
 				<?php echo $message ?><p>	
