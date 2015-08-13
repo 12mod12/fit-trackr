@@ -1,5 +1,5 @@
 <head>
-	  <title>12M0D12 - The works of Hamilton Reed</title>
+	  <title>12MOD12 - The works of Hamilton Reed</title>
 	  <link rel="stylesheet" href="/css/style.css">
 	  <link rel="stylesheet" href="/css/programs.css">
 	  
