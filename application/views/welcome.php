@@ -1,4 +1,4 @@
-<?php include '$_SERVER['DOCUMENT_ROOT']./garmr/connect.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/garmr/connect.php' ?>
 <html>
     <?php include '_includes/head.php' ?>
     <body>
