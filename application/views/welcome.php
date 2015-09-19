@@ -1,4 +1,6 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/garmr/redirect.php' ?>
+<?php 
+$referringMessage = "You must be logged in to use fit-trackr";
+include $_SERVER['DOCUMENT_ROOT'].'/garmr/redirect.php' ?>
 <html>
     <?php include '_includes/head.php' ?>
     <body>
