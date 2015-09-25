@@ -2,7 +2,7 @@
 <html>
     <?php include '_includes/head.php' ?>
     <body>
-    	<?php include '_includes/header.php'?>
+    	<?php include $_SERVER['DOCUMENT_ROOT'].'/scripts/header.php' ?>
     	<div class="content">
     		<div class="submission">
         		<form class = "submission" method = "POST" action = "<?php echo $ROOT_URL ?>index.php/liftType/submit">

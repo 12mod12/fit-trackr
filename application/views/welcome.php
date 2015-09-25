@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/garmr/redirect.php' ?>
 <html>
     <?php include '_includes/head.php' ?>
     <body>
-		<?php include '_includes/header.php' ?>
+		<?php include $_SERVER['DOCUMENT_ROOT'].'/scripts/header.php' ?>
     	<div class="content">
     		<div class="description">
         		<p><?php echo $message; ?></p>
