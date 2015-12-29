@@ -19,10 +19,6 @@
 {
 	color: white;
 	position:fixed;
-    top:30%;
-    left:45%;
-    width:50px;
-	
 }
 
 .dropdown
@@ -47,4 +43,21 @@
 .delete_lifts
 {
 	float: right;
+}
+.cardio_table
+{
+	height: 270px;
+	overflow: auto;
+	float: right;
+	color: white;
+	width: 100%;
+}
+.cardio_table_content
+{
+	color: white;
+}
+.delete_cardio
+{
+	float: right;
+	width: 60%;
 }
